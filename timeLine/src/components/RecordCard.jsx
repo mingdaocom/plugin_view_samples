@@ -17,7 +17,12 @@ const RecordCardWrapper = styled.div`
     }
     background-color: #fafafa !important;
     &.blackCardBg {
-      background-color: #444 !important;
+      background-color: #333 !important;
+      .rightContent {
+        .titleText {
+          color: #fff !important;
+        }
+      }
     }
   }
 
@@ -26,9 +31,11 @@ const RecordCardWrapper = styled.div`
       color: #fff;
     }
     .rightContent {
-      .titleText,
-      .abstractText {
+      .titleText {
         color: #fff;
+      }
+      .abstractText {
+        color: #bdbdbd;
       }
     }
   }
@@ -63,6 +70,10 @@ const RecordCardWrapper = styled.div`
   .coverImage {
     border-radius: 6px;
     margin-right: 12px;
+    object-fit: cover;
+    &.contain {
+      object-fit: contain !important;
+    }
   }
   .rightContent {
     flex: 1;
@@ -78,7 +89,7 @@ const RecordCardWrapper = styled.div`
       font-weight: bold;
       color: #333;
       -webkit-line-clamp: 3;
-      margin-bottom: 10px;
+      margin-bottom: 4px;
       &.noAbstract {
         margin-bottom: 0 !important;
       }
@@ -111,7 +122,7 @@ export default function RecordCard(props) {
     isReverseDirection,
   } = props;
   const { coverUrl, title, abstract } = data;
-  const { cardBgColor, pageBgColor, position } = timeLineViewConfig;
+  const { cardBgColor, pageBgColor, position, fillType } = timeLineViewConfig;
   const pageDisplayColor =
     pageBgColor === "gray" ? "#f3f4f6" : pageBgColor || "#fff";
 
@@ -120,7 +131,7 @@ export default function RecordCard(props) {
       case "gray":
         return "#f3f4f6";
       case "black":
-        return "#333";
+        return "#262626";
       case "transparent":
         return pageDisplayColor;
       default:
@@ -154,13 +165,13 @@ export default function RecordCard(props) {
                 coverUrl.indexOf("imageView2") > -1
                   ? coverUrl.replace(
                       /imageView2\/\d\/w\/\d+\/h\/\d+(\/q\/\d+)?/,
-                      "imageView2/1/w/64/h/64"
+                      "imageView2/2/w/64"
                     )
-                  : `${coverUrl}&imageView2/1/w/64/h/64`
+                  : `${coverUrl}&imageView2/2/w/64`
               }
               width={64}
               height={64}
-              className="coverImage"
+              className={`coverImage ${fillType}`}
             />
           )}
           <div className="rightContent">

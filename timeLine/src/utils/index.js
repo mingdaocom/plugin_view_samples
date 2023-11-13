@@ -17,6 +17,7 @@ export function parseEnv(env) {
     titleId: get(env, "titleId.0"),
     abstractId: get(env, "abstractId.0"),
     coverId: get(env, "coverId.0"),
+    fillType: get(env, "fillType.0"),
     position: get(env, "position.0"),
     cardBgColor: get(env, "cardBgColor.0"),
     pageBgColor: get(env, "pageBgColor.0"),
