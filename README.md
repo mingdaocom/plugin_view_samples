@@ -2,9 +2,9 @@
 
 |插件名称|作者|源代码|
 |-|-|-|
-|地图|裴晓闯|Github 地址：[https://github.com/mingdaocom/plugin_view_samples/map](https://github.com/mingdaocom/plugin_view_samples/map)<br />Gitee 地址：[https://gitee.com/mingdaocloud/plugin_view_samples/map](https://gitee.com/mingdaocloud/plugin_view_samples/map)|
-|明细表|谢成刚|Github 地址：[https://github.com/mingdaocom/plugin_view_samples/table](https://github.com/mingdaocom/plugin_view_samples/table)<br />Gitee 地址：[https://gitee.com/mingdaocloud/plugin_view_samples/table](https://gitee.com/mingdaocloud/plugin_view_samples/table)|
-|时间轴|安萍|Github 地址：[https://github.com/mingdaocom/plugin_view_samples/timeline](https://github.com/mingdaocom/plugin_view_samples/timeline)<br />Gitee 地址：[https://gitee.com/mingdaocloud/plugin_view_samples/timeline](https://gitee.com/mingdaocloud/plugin_view_samples/timeline)|
+|地图|裴晓闯|Github 地址：[https://github.com/mingdaocom/plugin_view_samples/tree/main/map](https://github.com/mingdaocom/plugin_view_samples/tree/main/map)<br />Gitee 地址：[https://gitee.com/mingdaocloud/plugin_view_samples/tree/main/map](https://gitee.com/mingdaocloud/plugin_view_samples/tree/main/map)|
+|明细表|谢成刚|Github 地址：[https://github.com/mingdaocom/plugin_view_samples/tree/main/table](https://github.com/mingdaocom/plugin_view_samples/tree/main/table)<br />Gitee 地址：[https://gitee.com/mingdaocloud/plugin_view_samples/tree/main/table](https://gitee.com/mingdaocloud/plugin_view_samples/tree/main/table)|
+|时间轴|安萍|Github 地址：[https://github.com/mingdaocom/plugin_view_samples/tree/main/timeline](https://github.com/mingdaocom/plugin_view_samples/tree/main/timeline)<br />Gitee 地址：[https://gitee.com/mingdaocloud/plugin_view_samples/tree/main/timeline](https://gitee.com/mingdaocloud/plugin_view_samples/tree/main/timeline)|
 
 # 视图插件开发文档
 
