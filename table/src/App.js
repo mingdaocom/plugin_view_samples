@@ -1,6 +1,7 @@
-import React, { useEffect, useState, useLayoutEffect, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { env, config, api, utils } from 'mdye';
 import { Table, Flex, Spin, Pagination } from 'antd';
+import CellControls from './components/CellControls';
 import _ from 'lodash';
 
 const pageSize = 10;
@@ -125,7 +126,7 @@ export default function () {
                     </Flex>
                   );
                 }
-                return value;
+                return <CellControls value={value} control={control} />;
               },
               onCell: (row) => {
                 if (row.isSub && row.key.includes('more')) {
@@ -148,6 +149,9 @@ export default function () {
           type: control.type,
           dataIndex: control.controlId,
           ...baseConfig,
+          render: (value) => {
+            return <CellControls value={value} control={control} />;
+          },
           onCell: (row, index) => {
             const value = row[control.controlId];
             if (row.isSub && value === undefined) {
