@@ -10,7 +10,7 @@ const NodeWrapper = styled.div`
   position: relative;
   display: flex;
   .timeText {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: bold;
     margin-bottom: 10px;
   }

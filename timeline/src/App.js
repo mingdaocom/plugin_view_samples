@@ -182,18 +182,22 @@ export default function App() {
               timeLineViewConfig={timeLineViewConfig}
               controls={controls}
               onClick={(recordId) => {
-                utils.openRecordInfo({
-                  appId,
-                  viewId,
-                  worksheetId,
-                  recordId,
-                  updateRows: (_, newRow) => {
-                    const newRecords = records.map((r) =>
-                      r.rowid === newRow.rowid ? newRow : r
-                    );
-                    updateRecords(newRecords);
-                  },
-                });
+                utils
+                  .openRecordInfo({
+                    appId,
+                    viewId,
+                    worksheetId,
+                    recordId,
+                  })
+                  .then((res) => {
+                    if (res.action === "update") {
+                      const newRow = res.value;
+                      const newRecords = records.map((r) =>
+                        r.rowid === newRow.rowid ? newRow : r
+                      );
+                      updateRecords(newRecords);
+                    }
+                  });
               }}
             />
           );
