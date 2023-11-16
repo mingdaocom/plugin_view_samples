@@ -22,12 +22,22 @@ export default function () {
 
   async function loadRecords() {
     setLoading(true);
-    const result = await api.getFilterRows({ worksheetId, viewId, pageSize, pageIndex });
+    const result = await api.getFilterRows({
+      worksheetId,
+      viewId,
+      pageSize,
+      pageIndex,
+      requestParams: {
+        plugin_detail_control: subField
+      }
+    });
     setRecordInfo(result);
     setLoading(false);
     result.data.forEach(item => {
-      if (item[subField]) {
+      const subFieldRes = JSON.parse(item[subField]);
+      if (subFieldRes.length) {
         loadRelationRows({
+          subFieldRes: subFieldRes.map(data => JSON.parse(data.sourcevalue)),
           controlId: subField,
           rowId: item.rowid
         });
@@ -35,21 +45,27 @@ export default function () {
     });
   }
 
-  async function loadRelationRows({ controlId, rowId, pageIndex = 1 }) {
-    const result = await api.getRowRelationRows({
-      worksheetId,
-      controlId,
-      rowId,
-      pageIndex,
-      pageSize: subPageSize,
-    });
+  async function loadRelationRows({ subFieldRes = [], controlId, rowId, pageIndex = 1 }) {
+    let loadRows = [];
+    if (subFieldRes.length) {
+      loadRows = subFieldRes;
+    } else {
+      const result = await api.getRowRelationRows({
+        worksheetId,
+        controlId,
+        rowId,
+        pageIndex,
+        pageSize: subPageSize,
+      });
+      loadRows = result.data;
+    }
     setRelationRows((data) => {
       const prevRes = relationRows[rowId] || [];
-      const res = prevRes.filter(n => !n.rowid.includes('more')).concat(result.data);
+      const res = prevRes.filter(n => !n.rowid.includes('more')).concat(loadRows);
       return {
         ...data,
         [`pageIndex-${rowId}`]: pageIndex,
-        [rowId]: result.data.length < subPageSize ? res : res.concat({ rowid: `more-${rowId}` })
+        [rowId]: loadRows.length < subPageSize ? res : res.concat({ rowid: `more-${rowId}` })
       }
     });
   }
