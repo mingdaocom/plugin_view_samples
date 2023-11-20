@@ -183,7 +183,11 @@ export default function RecordCard(props) {
                 {title}
               </div>
             )}
-            {abstract && <div className="abstractText">{abstract}</div>}
+            {abstract && (
+              <div className="abstractText">
+                {abstract.replace(/<[^>]+>/g, "")}
+              </div>
+            )}
           </div>
         </React.Fragment>
       )}
