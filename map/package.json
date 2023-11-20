@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "@amap/amap-react": "^0.1.5",
+    "@ctrl/tinycolor": "^4.0.2",
+    "lodash": "^4.17.21",
+    "mdye": "^0.0.13",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^6.0.9"
+  },
+  "devDependencies": {
+    "eslint": "^8.52.0",
+    "eslint-plugin-react": "^7.33.2"
+  }
+}
