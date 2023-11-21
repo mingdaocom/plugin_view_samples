@@ -2,9 +2,9 @@
 
 | 插件名称 | 作者   | 源代码                                                                                                                                                      |
 | -------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 地图     | 裴晓闯 | Github 地址：[https://github.com/mingdaocom/plugin_view_samples/tree/master/map](https://github.com/mingdaocom/plugin_view_samples/tree/main/map)           |
-| 明细表   | 谢成刚 | Github 地址：[https://github.com/mingdaocom/plugin_view_samples/tree/master/table](https://github.com/mingdaocom/plugin_view_samples/tree/main/table)       |
-| 时间轴   | 安萍   | Github 地址：[https://github.com/mingdaocom/plugin_view_samples/tree/master/timeline](https://github.com/mingdaocom/plugin_view_samples/tree/main/timeline) |
+| 地图     | 裴晓闯 | Github 地址：[https://github.com/mingdaocom/plugin_view_samples/tree/master/map](https://github.com/mingdaocom/plugin_view_samples/tree/master/map)           |
+| 明细表   | 谢成刚 | Github 地址：[https://github.com/mingdaocom/plugin_view_samples/tree/master/table](https://github.com/mingdaocom/plugin_view_samples/tree/master/table)       |
+| 时间轴   | 安萍   | Github 地址：[https://github.com/mingdaocom/plugin_view_samples/tree/master/timeline](https://github.com/mingdaocom/plugin_view_samples/tree/master/timeline) |
 
 # 视图插件开发文档
 
