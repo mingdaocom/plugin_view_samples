@@ -1,10 +1,9 @@
 # 视图插件源码示例
-
-| 插件名称 | 作者   | 源代码                                                                                                                                                      |
-| -------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 地图     | 裴晓闯 | Github 地址：[https://github.com/mingdaocom/plugin_view_samples/tree/master/map](https://github.com/mingdaocom/plugin_view_samples/tree/main/map)           |
-| 明细表   | 谢成刚 | Github 地址：[https://github.com/mingdaocom/plugin_view_samples/tree/master/table](https://github.com/mingdaocom/plugin_view_samples/tree/main/table)       |
-| 时间轴   | 安萍   | Github 地址：[https://github.com/mingdaocom/plugin_view_samples/tree/master/timeline](https://github.com/mingdaocom/plugin_view_samples/tree/main/timeline) |
+插件名称 | 源代码
+--- | ---
+地图 | [https://github.com/mingdaocom/plugin_view_samples/tree/master/map](https://github.com/mingdaocom/plugin_view_samples/tree/master/map)
+明细表 | [https://github.com/mingdaocom/plugin_view_samples/tree/master/table](https://github.com/mingdaocom/plugin_view_samples/tree/master/table)
+时间轴 | [https://github.com/mingdaocom/plugin_view_samples/tree/master/timeline](https://github.com/mingdaocom/plugin_view_samples/tree/master/timeline)
 
 # 视图插件开发文档
 
@@ -345,6 +344,7 @@ $ mdye push -m "首次提交demo"
     "config": {
       "appId": "string",         // 当前应用ID
       "worksheetId": "string",   // 当前工作表ID
+      "projectId": "string",   // 当前组织ID
       "viewId": "string",        // 当前视图ID
       "controls": [{             // 当前视图下的字段配置信息
         "controlId": "string",
@@ -352,257 +352,278 @@ $ mdye push -m "首次提交demo"
         ......
       }],
       "worksheetInfo": {...}    // 当前工作表配置信息
+      "currentAccount": { // 当前用户
+        "accountId": "", // 用户id
+        "fullname": "", // 用户名称
+        "avatar": "", // 用户头像
+        "lang": "", // 用户语言
+      },
     }
 }
 ```
 
-### mdye.api
+## mdye.api
 
 使用 VS Code 等支持代码提示的编辑器时编辑器会自动显示使用方法
 
 ![代码提示](_readme_static_assets/developer_view25.png)
 
-#### getFilterRows(_params_)<br />获取工作表行记录数据
+### getFilterRows(_params_)
+获取工作表行记录数据
 
-```javascript
-/**
- * 获取指定视图下工作表记录
- * @param params 参数
- * @param {string} params.worksheetId 工作表id
- * @param params.viewId 视图id
- * @param params.pageSize 每页数量
- * @param params.pageIndex 页码
- * @param params.sortId 排序字段
- * @param params.isAsc 是否升序
- * @param params.notGetTotal 不返回总数，设为 true 时接口速度快
- * @returns { data }
- */
+**参数：**
+- `params`：参数对象，包含以下属性：
+  - `params.worksheetId`：*工作表的ID*，类型为字符串。
+  - `params.viewId`：*视图的ID*。
+  - `params.pageSize`：*每页返回的记录数量*。
+  - `params.pageIndex`：*要返回的页码*。
+  - `params.sortId`：*排序字段的ID*。
+  - `params.isAsc`：*指示排序方式是否为升序*。
+  - `params.notGetTotal`：*当设置为true时，接口将不返回总记录数，以提高接口速度*。
+
+### getFilterRowsTotalNum(_params_)
+获取工作表行记录数
+
+**参数：**
+- `params`：参数对象，包含以下属性：
+  - `params.worksheetId`：*工作表的ID*，类型为字符串。
+  - `params.viewId`：*视图的ID*。
+  - `params.pageSize`：*每页返回的记录数量*。
+  - `params.pageIndex`：*要返回的页码*。
+
+
+### getRowDetail(_params_)
+获取行记录详情
+
+**参数：**
+- `params`：参数对象，包含以下属性：
+  - `params.appId`：应用ID。
+  - `params.worksheetId`：工作表的ID。
+  - `params.viewId`：视图的ID。
+  - `params.rowId`：记录的ID。
+  - `params.getTemplate`：返回对应表信息。
+
+
+### getRowRelationRows(_params_)
+获取关联记录
+
+**参数：**
+- `params`：参数对象，包含以下属性：
+  - `params.controlId`：关联记录字段或子表字段的controlId。
+  - `params.rowId`：记录的ID。
+  - `params.worksheetId`：当前表（关联记录字段或子表字段所在表）的ID。
+  - `params.keywords`：搜索记录关键字。
+  - `params.pageSize`：每页数量。
+  - `params.pageIndex`：页码。
+  - `params.getWorksheet`：对应关联表对象。
+
+### addWorksheetRow(_params_)
+创建记录
+
+**参数：**
+- `params`：参数对象，包含以下属性：
+  - `params.appId`：应用的ID。
+  - `params.worksheetId`：工作表的ID。
+  - `params.receiveControls`：字段数据，receiveControls: [{ controlId: "",  value: "" }]
+
+
+### updateWorksheetRow(_params_)
+更新行记录
+
+**参数：**
+- `params`：参数对象，包含以下属性：
+  - `params.appId`：应用的ID。
+  - `params.worksheetId`：工作表的ID。
+  - `params.rowId`：记录的ID。
+  - `params.newOldControl`：字段数据，具体看文档。
+
+
+### deleteWorksheetRow(_params_)
+删除行记录
+
+**参数：**
+- `params`：参数对象，包含以下属性：
+  - `params.appId`：应用的ID。
+  - `params.worksheetId`：工作表的ID。
+  - `params.rowIds`：记录ID列表。
+
+
+## mdye.utils
+
+### openRecordInfo(_params_)
+
+打开记录详情弹窗
+
+**参数：**
+
+- `params`：参数对象，包含以下属性：
+
+  - `params.appId`：应用id
+  - `params.worksheetId`：工作表id
+  - `params.viewId`：视图id
+  - `params.recordId`：记录id
+
+**返回：**
+
+返回 Promise，Promise结果是更新后的记录。
+
+```typescript
+{
+  action: "update",
+  value: {
+    rowid: string,
+    [key: string]: any
+  }
+}
 ```
 
-#### getFilterRowsTotalNum(_params_)<br />获取工作表行记录数
+---
 
-```javascript
-/**
- * @param params 参数
- * @param {string} params.worksheetId 工作表id
- * @param {string} params.viewId 视图id
- * @param {number} params.pageSize 每页数量
- * @param {number} params.pageIndex 页码
- * @returns { data } { state: 1, data: "100" }
- */
+### openNewRecord(_params_)
+
+打开创建记录弹窗
+
+**参数：**
+
+- `params`：参数对象，包含以下属性：
+
+  - `params.appId`：应用id
+  - `params.worksheetId`：工作表id
+
+**返回：**
+
+返回 Promise，Promise结果是新建的记录。
+
+```typescript
+{
+  rowid: string,
+  [key: string]: any
+}
 ```
 
-#### getRowDetail(_params_)<br />获取行记录详情
+---
 
-```javascript
-/**
- * 获取视图下指定记录详情
- * @param params 参数
- * @param params.appId 应用id
- * @param params.worksheetId 工作表id
- * @param params.viewId 视图id
- * @param params.rowId 记录id
- * @param params.getTemplate 返回对应表信息
- * @returns { data }
- */
+### selectUsers(_params_)
+
+选择人员
+
+**参数：**
+
+- `params`：参数对象，包含以下属性：
+
+  - `params.projectId`：组织id[可选]默认当前应用所在组织
+  - `params.unique`：只能选一个
+
+**返回：**
+
+返回 Promise，Promise结果是选择的人员。
+
+```typescript
+[{
+  accountId: string,
+  avatar: string,
+  fullname: string
+}]
 ```
 
-#### getRowRelationRows(_params_)<br />获取关联记录
+---
 
-```javascript
-/**
- * 获取视图下指定记录所关联的子表、关联记录列表
- * @param params 参数
- * @param params.controlId 关联记录字段或子表字段的controlId
- * @param params.rowId 记录id
- * @param params.worksheetId 当前表(关联记录字段或子表字段所在表)id
- * @param params.keywords 搜索记录关键字
- * @param params.pageSize 每页数量
- * @param params.pageIndex 页码
- * @param params.getWorksheet 对应关联表对象
- * @returns { data }
- */
+### selectDepartments(_params_)
+
+选择部门
+
+**参数：**
+
+- `params`：参数对象，包含以下属性：
+
+  - `params.projectId`：组织id[可选]默认当前应用所在组织
+  - `params.unique`：只能选一个
+
+**返回：**
+
+返回 Promise，Promise结果是选择的部门。
+
+```typescript
+[{
+  departmentId: string,
+  departmentName: string
+}]
 ```
 
-#### addWorksheetRow(_params_)<br />创建记录
+---
 
-```javascript
-/**
- * 添加记录
- * @param params 参数
- * @param params.appId 应用id
- * @param params.worksheetId 应用id
- * @param params.receiveControls 字段数据 具体看文档
- * @returns { data }
- */
+### selectOrgRole(_params_)
 
-receiveControls: [
-  {
-    controlId: "",
-    value: "",
-  },
-];
+选择组织角色
+
+**参数：**
+
+- `params`：参数对象，包含以下属性：
+
+  - `params.projectId`：组织id[可选]默认当前应用所在组织
+  - `params.unique`：只能选一个
+
+**返回：**
+
+返回 Promise，Promise结果是选择的组织。
+
+```typescript
+[{
+  organizeId: string,
+  organizeName: string
+}]
 ```
 
-#### updateWorksheetRow(_params_)<br />更新行记录
+---
 
-```javascript
-/**
- * 保存记录
- * @param params 参数
- * @param params.appId 应用id
- * @param params.worksheetId 工作表id
- * @param params.rowId 记录id
- * @param params.newOldControl 字段数据 具体看文档
- * @returns { data }
- */
+### selectRecord(_params_)
+
+选择记录
+
+**参数：**
+
+- `params`：参数对象，包含以下属性：
+
+  - `params.projectId`：组织id[可选]默认当前应用所在组织
+  - `params.relateSheetId`：对应的工作表 id
+  - `params.multiple`：选多个
+
+**返回：**
+
+返回 Promise，Promise结果是选择的记录。
+
+```typescript
+[{
+  rowid: string,
+  [key: string]: any
+}]
 ```
 
-#### deleteWorksheetRow(_params_)<br />删除行记录
+---
 
-```javascript
-/**
- * 删除记录
- * @param params 参数
- * @param params.appId 应用id
- * @param params.worksheetId 工作表id
- * @param params.rowIds 记录id列表
- * @returns { data }
- */
-```
+### selectLocation(_params_)
 
-### mdye.utils
+选择地图定位
 
-#### openNewRecord(_params_)<br />打开新建记录弹窗
+**参数：**
 
-```javascript
-/**
- * 打开创建记录弹窗
- * @param params 参数
- * @param params.appId 应用id
- * @param params.worksheetId 工作表id
- * @param params.onAdd 创建记录成功回调 (newRow) => {}
- */
-openNewRecord: (params: {
-  appId: string,
-  worksheetId: string,
-  onAdd: function,
-}) => any;
-```
+- `params`：参数对象，包含以下属性：
 
-#### openRecordInfo(_params_)<br />打开记录详情弹窗
+  - `params.distance`：距离
+  - `params.defaultPosition`：默认位置 {lat, lng}
+  - `params.multiple`：选多个
 
-```javascript
-/**
- * 打开记录详情弹窗
- * @param params 参数
- * @param params.appId 应用id
- * @param params.worksheetId 工作表id
- * @param params.viewId 视图id
- * @param params.recordId 记录id
- * @param params.onClose 关闭弹窗回调
- * @param params.updateRows 更新记录回调 (rowIds, newRow) => {}
- */
-openRecordInfo: (params: {
-  appId: string,
-  worksheetId: string,
-  viewId: string,
-  recordId: string,
-  onClose: function,
-  updateRows: function,
-}) => any;
-```
+**返回：**
 
-#### selectRecord(_params_)<br />打开选择记录弹窗
+返回 Promise，Promise结果是选择的地点。
 
-```javascript
-/**
- * 选择记录
- * @param params 参数
- * @param params.projectId 组织id[可选]默认当前应用所在组织
- * @param params.multiple 选多个
- * @param params.relateSheetId 对应的工作表 id
- * @param params.onSelect 选择完成回调 (records) => {}
- */
-selectRecord: (params: {
-  projectId: string,
-  relateSheetId: string,
-  multiple: boolean,
-  onSelect: function,
-}) => any;
-```
-
-#### selectUsers(_params_)<br />打开选择成员弹窗
-
-```javascript
-/**
- * 选择人员
- * @param params 参数
- * @param params.projectId 组织id[可选]默认当前应用所在组织
- * @param params.unique 只能选一个
- * @param params.onSelect 选择完成回调 (users) => {}
- */
-selectUsers: (params: {
-  projectId: string,
-  unique: boolean,
-  onSelect: function,
-}) => any;
-```
-
-#### selectDepartments(_params_)<br />打开选择部门弹窗
-
-```javascript
-/**
- * 选择部门
- * @param params 参数
- * @param params.projectId 组织id[可选]默认当前应用所在组织
- * @param params.unique 只能选一个
- * @param params.onSelect 选择完成回调 (departments) => {}
- */
-selectDepartments: (params: {
-  projectId: string,
-  unique: boolean,
-  onSelect: function,
-}) => any;
-```
-
-#### selectOrgRole(_params_)<br />打开选择组织角色弹窗
-
-```javascript
-/**
- * 选择组织角色
- * @param params 参数
- * @param params.projectId 组织id[可选]默认当前应用所在组织
- * @param params.unique 只能选一个
- * @param params.onSelect 选择完成回调 (departments) => {}
- */
-selectOrgRole: (params: {
-  projectId: string,
-  unique: boolean,
-  onSelect: function,
-}) => any;
-```
-
-#### selectLocation(_params_)<br />打开选择地图定位弹窗
-
-```javascript
-/**
- * 选择地图定位
- * @param params 参数
- * @param params.distance 距离
- * @param params.closeAfterSelect 选择地点后关闭弹窗
- * @param params.multiple 选多个
- * @param params.defaultPosition  默认位置 {lat, lng}
- * @param params.onSelect 选择完成回调 () => {}
- * @param params.onClose 关闭回调 () => {}
- */
-selectLocation: (params: {
-  distance: number,
-  defaultPosition: Object,
-  multiple: boolean,
-  onSelect: function,
-  onClose: function,
-}) => any;
+```typescript
+[{
+  address: string,
+  lat: string,
+  lng: string,
+  name: string
+}]
 ```
 
 ### mdye 消息系统
