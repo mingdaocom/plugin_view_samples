@@ -630,10 +630,6 @@ $ mdye push -m "首次提交demo"
 
 mdye 支持以发布订阅的模式响应插件外部的操作，比如当视图筛选发生变化时插件可以接收到变更后的筛选值去重新请求数据。
 
-一个简单的用法：
-
-####
-
 ```javascript
 import React, { useEffect, useState, useCallback } from "react";
 import { env, config, api, utils, md_emitter } from "mdye";
