@@ -93,4 +93,4 @@
 
 ![Alt text](.assets/image-18.png)
 
-<style> img { max-width: 800px;  height: auto; } </style>
+<!-- <style> img { max-width: 800px;  height: auto; } </style> -->
