@@ -22,7 +22,7 @@
 编辑器打开插件目录，以 timeline 为例。  
 在 timeline 文件夹内执行 `npm i` 安装项目依赖
 
-![Alt text](https://filepub.mingdao.com/plugin_view_examples/image-3.png)
+![Alt text](https://filepub.mingdao.com/plugin_view_examples/editor.png)
 
 ### 2.新建开发插件视图
 
