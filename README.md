@@ -38,18 +38,18 @@
 
 ### 3.更改本地 mdye.json 配置
 
-查看"建立本地项目"这一步，使用 --id、--template 和 --host 后跟的参数替换本地项目内 mdye.json 文件里的对应的配置，没有 --host 时不需要替换 host。
+查看"建立本地项目"这一步，使用 --id 后跟的参数替换本地项目内 mdye.json 文件里的对应的配置，命令内含 --host 时需要替换配置文件内的 host，没有的话不需要。
 
-![Alt text](.assets/image-4.png)
+![Alt text](.assets/image--1.png)
 
 修改后的 mdye.json 文件
 
-![Alt text](.assets/image-7.png)
+![Alt text](.assets/image--2.png)
 
 到这一步已成功将本地的项目与明道云内建立的视图插件进行了关联。  
 如果项目仓库存在`.config/params-config.json`文件，请执行 `mdye sync-params` 命令来将插件的参数配置同步到在明道云建立的视图插件。
 
-![Alt text](.assets/image-23.png)
+![Alt text](.assets/image--3.png)
 
 刷新明道云页面，打开对应视图的视图配置，会在"插件设置"里看到刚刚同步上去的参数配置，这个时候可以将插件名称改成想要的名字，这里改成"时间轴视图"（修改名称在任意一步都可以）。
 
@@ -63,7 +63,7 @@
 
 执行 `mdye push -m 初始化` 推送文件到明道云
 
-![Alt text](.assets/image-24.png)
+![Alt text](.assets/image--4.png)
 
 打开视图配置查看"提交"部分，标题"已提交"下面会出现刚刚提交的版本，可以选中前面的单选框来预览此次提交，选中后视图区域会自动刷新。
 
@@ -83,7 +83,7 @@
 
 ### 6.应用管理员在插件中心开启插件
 
-从明道云首页进入插件中心就可以看到刚刚发布的插件了。
+从明道云首页进入插件中心可以看到刚刚发布的插件。
 
 ![Alt text](.assets/image-27.png)
 
