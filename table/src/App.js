@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { env, config, api, utils } from 'mdye';
-import { Table, Flex, Spin, Pagination } from 'antd';
+import { ConfigProvider, Table, Flex, Spin, Pagination } from 'antd';
+import zhCN from 'antd/locale/zh_CN';
 import CellControls from './components/CellControls';
 import _ from 'lodash';
 
-const pageSize = 10;
 const subPageSize = 5;
 
 export default function () {
@@ -15,6 +15,7 @@ export default function () {
   const subFieldcontrol = _.find(controls, { controlId: subField }) || {};
   const [loading, setLoading] = useState(true);
   const [recordInfo, setRecordInfo] = useState(null);
+  const [pageSize, setPageSize] = useState(Number(localStorage.getItem('plugin-view-table-pageSize')) || 10);
   const [subSheetInfoLoading, setSubSheetInfoLoading] = useState(false);
   const [subSheetInfoControls, setSubSheetInfoControls] = useState([]);
   const [pageIndex, setPageIndex] = useState(1);
@@ -85,7 +86,7 @@ export default function () {
 
   useEffect(() => {
     loadRecords();
-  }, [pageIndex]);
+  }, [pageIndex, pageSize]);
 
   if (subSheetInfoLoading || (loading && !recordInfo)) {
     return (
@@ -207,7 +208,7 @@ export default function () {
   }));
 
   return (
-    <div>
+    <ConfigProvider locale={zhCN}>
       <Table
         bordered={true}
         size="small"
@@ -221,16 +222,22 @@ export default function () {
         }}
         pagination={false}
       />
-      <Flex justify="flex-end" style={{ marginTop: 10 }}>
+      <Flex justify="flex-end" style={{ padding: 10 }}>
         <Pagination
           size="small"
+          pageSize={pageSize}
           total={recordInfo.count}
+          showSizeChanger={true}
+          onShowSizeChange={(current, size) => {
+            localStorage.setItem('plugin-view-table-pageSize', size);
+            setPageSize(size);
+          }}
           onChange={index => {
             setRelationRows({});
             setPageIndex(index);
           }}
         />
       </Flex>
-    </div>
+    </ConfigProvider>
   );
 }
