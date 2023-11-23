@@ -2,7 +2,7 @@
 
 ### 介绍
 
-![thumbnail](https://filepub.mingdao.com/plugin_view_examples/map-preview.png)
+![thumbnail](https://filepub.mingdao.com/plugin_view_examples/map-preview-n.png)
 
 这是一个使用高德地图组件实现的地图视图，视图使用记录的地点字段数据在地图上呈现记录。您可以通过单选字段来自定义标签的颜色。
 
@@ -14,8 +14,8 @@
 
 地图视图插件需要使用"环境变量"特性，高德地图的运行得先配置好高德地图 key。您需要在"开发调试"环境参数位置按` {"amap_key":"xxxxxxxxxxxxxxxx"}` 格式配置好 key。
 
-![thumbnail](https://filepub.mingdao.com/plugin_view_examples/map-key-1.png)
+![thumbnail](https://filepub.mingdao.com/plugin_view_examples/map-key-n.png)
 
 已发布的视图在插件中心配置
 
-![thumbnail](https://filepub.mingdao.com/plugin_view_examples/map-key-2.png)
+![thumbnail](https://filepub.mingdao.com/plugin_view_examples/map-key-n2.png)

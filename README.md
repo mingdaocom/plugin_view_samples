@@ -17,7 +17,7 @@
 打开控制台，克隆仓库到本地
 `git clone https://github.com/mingdaocom/plugin_view_samples.git`
 
-![Alt text](https://filepub.mingdao.com/plugin_view_examples/image.png)
+![Alt text](https://filepub.mingdao.com/plugin_view_examples/git-clone-3.png)
 
 编辑器打开插件目录，以 timeline 为例。  
 在 timeline 文件夹内执行 `npm i` 安装项目依赖
@@ -85,7 +85,7 @@
 
 从明道云首页进入插件中心可以看到刚刚发布的插件。
 
-![Alt text](https://filepub.mingdao.com/plugin_view_examples/image-27.png)
+![Alt text](https://filepub.mingdao.com/plugin_view_examples/plugin-center.png)
 
 开启插件发布状态
 
