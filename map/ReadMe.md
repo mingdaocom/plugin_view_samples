@@ -10,7 +10,7 @@
 
 ### 如何安装这个插件到我的组织
 
-[请查看项目主页的教程](https://github.com/mingdaocom/plugin_view_samples)
+[请查看项目主页的教程](https://github.com/mingdaocom/plugin_view_samples#%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85%E5%B7%B2%E6%9C%89%E6%8F%92%E4%BB%B6%E5%88%B0%E7%BB%84%E7%BB%87)
 
 地图视图插件要注意的是地图插件需要使用"环境变量"特性，高德地图的运行需要配置好高德地图 key。您需要在"开发调试"环境参数位置按` {"amap_key":"xxxxxxxxxxxxxxxx"}` 格式配置好 key。
 
