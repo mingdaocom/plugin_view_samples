@@ -8,7 +8,7 @@
 
 ## 如何开发一个插件
 
-[视图插件开发文档](https://help.mingdao.com/extensions/developer/view/)
+[视图插件开发文档](https://help.mingdao.com/extensions/developer/view/??)
 
 ## 如何安装已有插件到组织
 
