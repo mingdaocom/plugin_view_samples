@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "classnames": "^2.3.2",
-    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
     "mdye": "^0.0.13",
     "moment": "^2.29.4",
     "react": "^18.2.0",

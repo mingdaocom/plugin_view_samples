@@ -16,7 +16,6 @@ import {
   parseRecord,
 } from "./utils";
 import { isEmpty, omit } from "lodash";
-import Status from "./components/Status";
 const { getFilterRows } = api;
 
 AmapReactConfig.version = "2.0";

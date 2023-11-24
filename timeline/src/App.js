@@ -6,7 +6,7 @@ import cx from "classnames";
 import { parseEnv, formatTime } from "./utils";
 import TimeNode from "./components/TimeNode.jsx";
 import moment from "moment";
-import { omit } from "lodash";
+import { omit } from "lodash-es";
 
 const Con = styled.div`
   height: 100vh;

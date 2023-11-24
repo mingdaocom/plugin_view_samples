@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { find } from "lodash";
+import { find } from "lodash-es";
 import cx from "classnames";
 import { getNodeColor } from "../utils";
 import RecordCard from "./RecordCard.jsx";

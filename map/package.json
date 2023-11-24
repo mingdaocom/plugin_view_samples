@@ -2,7 +2,7 @@
   "dependencies": {
     "@amap/amap-react": "^0.1.5",
     "@ctrl/tinycolor": "^4.0.2",
-    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
     "mdye": "^0.0.13",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
