@@ -85,8 +85,16 @@ export default function () {
   }, []);
 
   useEffect(() => {
-    loadRecords();
+    showFields.length && loadRecords();
   }, [pageIndex, pageSize]);
+
+  if (!showFields.length) {
+    return (
+      <Flex justify="center" align="center" style={{ height: '100%', color: '#9e9e9e' }}>
+        请先在视图配置中配置显示字段
+      </Flex>
+    );
+  }
 
   if (subSheetInfoLoading || (loading && !recordInfo)) {
     return (
