@@ -4,7 +4,7 @@ import { Marker } from "@amap/amap-react";
 import PinDetailCard from "./PinDetailCard";
 import pin from "../assets/pin.svg";
 import { arrayOf, func, number, shape, string } from "prop-types";
-import { find, identity, isFunction } from "lodash";
+import { find, identity, isFunction } from "lodash-es";
 import { TinyColor } from "@ctrl/tinycolor";
 import { safeParse } from "../utils";
 

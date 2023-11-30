@@ -1,4 +1,4 @@
-import { get } from "lodash";
+import { get } from "lodash-es";
 import moment from "moment";
 
 export function safeParse(dataStr, type) {

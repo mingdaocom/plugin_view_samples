@@ -1,4 +1,4 @@
-import { get, isEmpty, isNumber } from "lodash";
+import { get, isNumber } from "lodash-es";
 
 export function safeParse(dataStr, type) {
   try {
